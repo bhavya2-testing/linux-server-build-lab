@@ -13,6 +13,12 @@ Before making any changes, collect information about the environment.
 
 Identify:
 
+| Command              | Purpose                                                    |
+| -------------------- | ---------------------------------------------------------- |
+| `uname -a`              | Shows free and used space for entire mounted filesystems.  |
+| `du -sh <directory>` | Shows the disk space used by a specific directory or file. |
+
+
  `uname -a` 
 - Linux distribution
 - Kernel version
