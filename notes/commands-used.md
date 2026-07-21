@@ -101,3 +101,140 @@ After completing the task, include:
 - I practiced verifying user creation instead of assuming the command succeeded.
 - I learned the difference between creating a user and configuring their password.
 ---
+
+## Phase 3 — Task 3: Application File Security(Task 3: Application File Security)
+Scenario
+
+A development team has deployed an application directory on a Linux server.
+
+The application contains different types of files:
+
+Configuration files (developers can view and update)
+Sensitive credentials (only the application owner should access)
+Deployment scripts (must be executable)
+
+Your job is to configure Linux permissions correctly.
+
+### Objective
+Create the file structure
+
+/opt/application
+│
+├── config.txt
+├── credentials.txt
+└── deploy.sh
+and have each of the file with sample content.
+
+### Permission Requirements
+config.txt
+  - Purpose:
+  - Application configuration that developers need to update.
+
+- Requirements:
+  - Owner → read/write
+  - Group → read/write
+  - Others → no access
+
+credentials.txt
+  - Purpose:
+  - Sensitive application credentials.
+
+- Requirements:
+  - Only owner can read/write
+  - Group has no access
+  - Others have no access
+
+deploy.sh
+  - Purpose:
+  - Deployment script.
+
+ - Requirements:
+   - Owner can read/write/execute
+   - Group can read/execute
+   - Others can read/execute
+
+###Ownership Requirements
+
+###Create a scenario where:
+
+Application owner = developer1
+Development team group = developers
+
+(You may need to create the group and users if they don't already exist from your previous task.)
+
+The directory should belong to:
+
+`developer1:developers`
+
+Verification Requirements
+
+You should verify:
+
+1. Directory ownership
+- Check:
+   - /opt/application
+
+2. File permissions
+
+- Verify:
+  - config.txt
+  - credentials.txt
+  - deploy.sh
+
+4. Test access
+
+- Test using:
+  - developer1
+  - developer2
+  - tester1
+
+4. Confirm:
+  - Who can edit config.txt?
+  - Who can access credentials.txt?
+  - Who can execute deploy.sh?
+
+### Commands Used
+
+For user and password creation , see Phase 2
+
+`groupadd developers` - create group named developers
+`gpasswd -a developer1 developers` - add develeoper1 to group developers
+
+`mkdir /opt/application` - creates the directory
+`ls -ld /opt/application/` - list the directory details
+
+`chgrp developers /opt/application/` - change the group of directory to developers
+`chown developer1 /opt/application/` - change the owner of directory to developer1
+`vim /opt/application/config.txt` - create a file config.txt
+`vim /opt/application/credentials.txt` - create a file credentials.txt
+`vim /opt/application/deploy.sh` - create d a file deploy.sh
+`chown developer1:developers /opt/application/*` - change ownership of complete directory
+`chmod 660 /opt/application/config.txt` - change file permission to 'rw-rw----'
+`chmod 600 /opt/application/credentials.txt` - change file permission to 'rw-------'
+`chmod 755 /opt/application/deploy.sh` - change file permission to 'rwxrw-rw-'
+
+
+### Permission Configuration
+
+### Verification
+Test using:
+
+developer1
+developer2
+tester1
+
+Confirm:
+
+Who can edit config.txt?  - 
+Who can access credentials.txt? - 
+Who can execute deploy.sh? - 
+
+
+### Screenshots
+
+### Lessons Learned
+- Linux permissions control access through owner, group, and others.
+- `chmod` changes permissions while `chown` changes ownership.
+- Sensitive files should follow the principle of least privilege.
+- Testing permissions with different users helps confirm security settings.
+---
