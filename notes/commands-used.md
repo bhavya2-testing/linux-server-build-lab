@@ -242,3 +242,65 @@ Who can execute deploy.sh? -
 - Sensitive files should follow the principle of least privilege.
 - Testing permissions with different users helps confirm security settings.
 ---
+
+## Phase 4: Web Server Deployment and Service Management
+Scenario - Your development team needs a web server to host a simple application landing page.
+
+As the Linux administrator, your responsibilities are to:
+- Install and configure Nginx
+- Manage the service using systemctl
+- Verify the application is accessible
+- Troubleshoot common service issues
+
+### Task 4: Deploy an Nginx Web Server
+
+Objectives
+- Install Nginx (if it's not already installed).
+- Start the Nginx service.
+- Enable Nginx to start automatically on boot.
+- Verify the service is running.
+- Verify that port 80 is listening.
+- Replace the default web page with your own custom page.
+- Verify the page using curl localhost.
+
+### Commands Used
+
+`sudo apt update` - 
+
+`sudo apt install nginx` -
+
+`systemctl start nginx` - 
+
+`systemctl status nginx` - 
+
+`sudo ss -tunlp | grep 80` - 
+
+`vim /var/www/html/index.html` - 
+
+`curl localhost` - 
+
+
+### Verification
+
+Show how you confirmed:
+
+Nginx is installed.
+Service is active.
+Service is enabled.
+Port 80 is listening.
+Web page is accessible.
+
+### Screenshots
+
+Capture only meaningful screenshots, for example:
+
+systemctl status nginx
+ss -tulnp | grep :80
+curl localhost
+
+###Lessons Learned
+
+Difference between start, stop, restart, and reload.
+How systemctl manages Linux services.
+Why curl localhost is a useful verification step.
+How to verify that a service is listening on the expected port.
