@@ -4,7 +4,7 @@
 
 Inspect the Linux server to gather baseline system information before making any configuration changes.
 
-## Commands Used
+### Commands Used
 
 - `uname -a` -  Provides the Kernel version and other details
 - `cat /etc/os-release` -  Provides the OS distribution information
@@ -127,42 +127,36 @@ and have each of the file with sample content.
 
 ### Permission Requirements
 config.txt
-  - Purpose:
-  - Application configuration that developers need to update.
-
+- Purpose: Application configuration that developers need to update.
 - Requirements:
   - Owner → read/write
   - Group → read/write
   - Others → no access
 
 credentials.txt
-  - Purpose:
-  - Sensitive application credentials.
-
+- Purpose: Sensitive application credentials.
 - Requirements:
-  - Only owner can read/write
-  - Group has no access
-  - Others have no access
+    - Only owner can read/write
+    - Group has no access
+    - Others have no access
 
 deploy.sh
-  - Purpose:
-  - Deployment script.
-
- - Requirements:
+- Purpose: Deployment script.
+- Requirements:
    - Owner can read/write/execute
    - Group can read/execute
    - Others can read/execute
 
-###Ownership Requirements
-
-###Create a scenario where:
+### Ownership Requirements
+ 
+### Create a scenario where:
 
 Application owner = developer1
 Development team group = developers
 
 (You may need to create the group and users if they don't already exist from your previous task.)
 
-The directory should belong to:
+The **directory** should belong to:
 
 `developer1:developers`
 
@@ -198,19 +192,29 @@ You should verify:
 For user and password creation , see Phase 2
 
 `groupadd developers` - create group named developers
+
 `gpasswd -a developer1 developers` - add develeoper1 to group developers
 
 `mkdir /opt/application` - creates the directory
+
 `ls -ld /opt/application/` - list the directory details
 
 `chgrp developers /opt/application/` - change the group of directory to developers
+
 `chown developer1 /opt/application/` - change the owner of directory to developer1
+
 `vim /opt/application/config.txt` - create a file config.txt
+
 `vim /opt/application/credentials.txt` - create a file credentials.txt
+
 `vim /opt/application/deploy.sh` - create d a file deploy.sh
+
 `chown developer1:developers /opt/application/*` - change ownership of complete directory
+
 `chmod 660 /opt/application/config.txt` - change file permission to 'rw-rw----'
+
 `chmod 600 /opt/application/credentials.txt` - change file permission to 'rw-------'
+
 `chmod 755 /opt/application/deploy.sh` - change file permission to 'rwxrw-rw-'
 
 
