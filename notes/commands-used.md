@@ -1,50 +1,36 @@
 
-# Phase 1: Server Baseline Assessment
+## Objective
 
-## Task 1: Inspect the Linux Server
+Inspect the Linux server to gather baseline system information before making any configuration changes.
 
-### Scenario
+## Commands Used
 
-You have received access to a new Linux server.
+- `uname -a` -  Provides the Kernel version and other details
+- `cat /etc/os-release` -  Provides the OS distribution information
+- `whoami` - Provides the current user information
+- `cat /proc/cpuinfo` -  Provides CPU information
+- `free -h` -  Provides memory usage information
+- `df -h` - Provides the disk usage information
+- `htop` - Provides live running processes information
+- `sudo ss -tulnp` - Provides network inforamtion of listening ports
 
-Before making any changes, collect information about the environment.
+## Verification
 
-### Objectives
+Verified the operating system, kernel version, CPU, memory, disk usage, running processes, and listening network ports.
 
-Identify:
-
-- Linux distribution
-- Kernel version
-- Current user
-- CPU information
-- Memory usage
-- Disk usage
-- Running processes
-- Network information
-
-### Deliverables
-
-### Document: Commands Used
-  
-| Commands              | Purpose                                                    |
-| -------------------- | ---------------------------------------------------------- |
-| `uname -a`           | Show kernel version name, version and archiecture.         |
-| `uname -v`           | Shows kernel vesion.                                       |
-| `whoami`             | Shows the current user                                     |
-| `htop`               | Shows CPU information - Memory usage - Disk usage - Running processes |
-| `sudo ss -tulnp`     | Shows Network information with ports                       |
-
-
-### Document: System information collected
-
-  
 ### Document: Screenshots
 
-| Commands             | Screenshots                                               |
-| ----------| ---------------------------------------------------------- |
-| `uname -a`| https://github.com/bhavya2-testing/linux-server-build-lab/blob/1521230641c0c6adcd05f85dd5cf0d3ff33e65c5/screenshots/Image1.png |
+<img width="1440" height="900" alt="Screen Shot 2026-07-21 at 9 21 37 AM" src="https://github.com/user-attachments/assets/9791d1e8-3f90-430c-bd7d-dbedaadc0ef9" />
+<img width="1440" height="900" alt="Screen Shot 2026-07-21 at 9 22 10 AM" src="https://github.com/user-attachments/assets/d3e73c56-0b4b-44ec-81ac-38cc92c0cd42" />
+<img width="1440" height="900" alt="Screen Shot 2026-07-21 at 9 22 24 AM" src="https://github.com/user-attachments/assets/fe3b1e10-427c-4e77-97d8-84eb5a78b536" />
 
+## Lessons Learned
 
-### Document:Observations
+- `uname` provides kernel information.
+- `/etc/os-release` provides distribution details.
+- `df` reports filesystem usage.
+- `htop` is useful for monitoring system resources in real time.
+  
+
 
 ---
