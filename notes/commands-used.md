@@ -41,8 +41,8 @@ Identify:
 ### Document: Screenshots
 
 | Commands             | Screenshots                                               |
-| -------------------- | ---------------------------------------------------------- |
-| `uname -a`           |[  ![screenshots](screenshots/Image1.png)  ](https://github.com/bhavya2-testing/linux-server-build-lab/blob/1521230641c0c6adcd05f85dd5cf0d3ff33e65c5/screenshots/Image1.png)                   |
+| ----------| ---------------------------------------------------------- |
+| `uname -a`|(https://github.com/bhavya2-testing/linux-server-build-lab/blob/1521230641c0c6adcd05f85dd5cf0d3ff33e65c5/screenshots/Image1.png) |
 
 
 ### Document:Observations
