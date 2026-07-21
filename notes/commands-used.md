@@ -13,26 +13,13 @@ Before making any changes, collect information about the environment.
 
 Identify:
 
-| Command              | Purpose                                                    |
-| -------------------- | ---------------------------------------------------------- |
-| `uname -a`              | Shows free and used space for entire mounted filesystems.  |
-| `du -sh <directory>` | Shows the disk space used by a specific directory or file. |
-
-
- `uname -a` 
 - Linux distribution
 - Kernel version
-  
-  `whoami` 
 - Current user
-
-  `htop`
 - CPU information
 - Memory usage
 - Disk usage
 - Running processes
-  
-  `sudo ss -tulnp`
 - Network information
 
 ### Deliverables
@@ -40,8 +27,26 @@ Identify:
 Document:
 
 - Commands used
+  
+| Commands              | Purpose                                                    |
+| -------------------- | ---------------------------------------------------------- |
+| `uname -a`           | Show kernel version name, version and archiecture.         |
+| `uname -v`           | Shows kernel vesion.                                       |
+| `whoami`             | Shows the current user                                     |
+| `htop`               | Shows CPU information - Memory usage - Disk usage - Running processes |
+| `sudo ss -tulnp`     | Shows Network information with ports                       |
+
+
 - System information collected
+
+  
 - Screenshots
+
+| Commands             | Screenshots                                               |
+| -------------------- | ---------------------------------------------------------- |
+| `uname -a`           |          |
+
+
 - Observations
 
 ---
