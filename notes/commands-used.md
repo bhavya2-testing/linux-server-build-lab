@@ -24,9 +24,7 @@ Identify:
 
 ### Deliverables
 
-Document:
-
-- Commands used
+### Document: Commands Used
   
 | Commands              | Purpose                                                    |
 | -------------------- | ---------------------------------------------------------- |
@@ -37,16 +35,16 @@ Document:
 | `sudo ss -tulnp`     | Shows Network information with ports                       |
 
 
-- System information collected
+### Document: System information collected
 
   
-- Screenshots
+### Document: Screenshots
 
 | Commands             | Screenshots                                               |
 | -------------------- | ---------------------------------------------------------- |
 | `uname -a`           |          |
 
 
-- Observations
+### Document:Observations
 
 ---
