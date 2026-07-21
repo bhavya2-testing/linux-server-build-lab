@@ -42,7 +42,7 @@ Identify:
 
 | Commands             | Screenshots                                               |
 | -------------------- | ---------------------------------------------------------- |
-| `uname -a`           |          |
+| `uname -a`           |    screenshots/Image1.png      |
 
 
 ### Document:Observations
