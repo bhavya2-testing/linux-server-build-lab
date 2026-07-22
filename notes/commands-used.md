@@ -281,25 +281,24 @@ Objectives
 - Verify the page using curl localhost.
 
 ### Commands Used
+`systemctl status nginx` - Will tell the status of the service
 
-`sudo apt update` - 
+`sudo apt upgrade` - Updates the local package index with the latest package information
 
-`sudo apt install nginx` -
+`sudo apt install nginx` - Downloads and installs a specific software package by name.
 
-`systemctl start nginx` - 
+`systemctl start nginx` - Starts the nginx service
 
-`systemctl status nginx` - 
+`systemctl status nginx` - Provide information about service with status and other details 
 
-`sudo ss -tunlp | grep 80` - 
+`sudo ss -tunlp | grep 80` - Confirms that nginx is listening to tcp at port 80
 
-`vim /var/www/html/index.html` - 
+`vim /var/www/html/index.html` - Is the default page created by nginx service
 
-`curl localhost` - 
+`curl localhost` - Confirms if a web server or service is running locally on your own computer
 
 
 ### Verification
-
-Show how you confirmed:
 
 Nginx is installed.
 Service is active.
@@ -309,15 +308,13 @@ Web page is accessible.
 
 ### Screenshots
 
-Capture only meaningful screenshots, for example:
+<img width="969" height="446" alt="systemctl-status" src="https://github.com/user-attachments/assets/759ee7c5-e26c-4c27-9ac3-b4a72f2e36a9" />
+<img width="2003" height="479" alt="systemctl-status" src="https://github.com/user-attachments/assets/8492dd70-7d8e-43af-b4b7-07f61a0807b3" />
+<img width="1323" height="851" alt="reload-nginx" src="https://github.com/user-attachments/assets/f36c0b6b-f802-4534-8d42-143b31adf9c7" />
 
-systemctl status nginx
-ss -tulnp | grep :80
-curl localhost
 
 ###Lessons Learned
 
-Difference between start, stop, restart, and reload.
-How systemctl manages Linux services.
-Why curl localhost is a useful verification step.
-How to verify that a service is listening on the expected port.
+- Nginx serves content from `/var/www/html` by default.
+- `systemctl reload` applies configuration or content changes without stopping the service.
+- `curl localhost` is a quick way to verify a web server from the command line.
