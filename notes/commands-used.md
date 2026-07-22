@@ -281,13 +281,15 @@ Objectives
 - Verify the page using curl localhost.
 
 ### Commands Used
-`systemctl status nginx` - Will tell the status of the service
+`systemctl status nginx` - Will tell the status of the service(if not installed ,says service not found)
 
 `sudo apt upgrade` - Updates the local package index with the latest package information
 
 `sudo apt install nginx` - Downloads and installs a specific software package by name.
 
 `systemctl start nginx` - Starts the nginx service
+
+`systemctk is-enabled nginx` - Confirms if Nginx to enabled to automatically start on boot.  
 
 `systemctl status nginx` - Provide information about service with status and other details 
 
