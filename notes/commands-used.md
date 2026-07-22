@@ -203,13 +203,13 @@ For user and password creation , see Phase 2
 
 `chown developer1 /opt/application/` - change the owner of directory to developer1
 
+`chown developer1:developers /opt/application/*` - change ownership of complete directory
+
 `vim /opt/application/config.txt` - create a file config.txt
 
 `vim /opt/application/credentials.txt` - create a file credentials.txt
 
 `vim /opt/application/deploy.sh` - create d a file deploy.sh
-
-`chown developer1:developers /opt/application/*` - change ownership of complete directory
 
 `chmod 660 /opt/application/config.txt` - change file permission to 'rw-rw----'
 
@@ -229,12 +229,29 @@ tester1
 
 Confirm:
 
-Who can edit config.txt?  - 
-Who can access credentials.txt? - 
-Who can execute deploy.sh? - 
+Who can edit config.txt?  
+Who can access credentials.txt?
+Who can execute deploy.sh?
 
+| User | config.txt | credentials.txt | deploy.sh |
+|------|------------|-----------------|-----------|
+| developer1 | Read / Write | Read / Write | Read / Write / Execute |
+| developer2 | Read / Write | No Access | Read / Execute |
+| tester1 | No Access | No Access | Read / Execute |
 
 ### Screenshots
+
+<img width="1496" height="231" alt="adduser-to-group" src="https://github.com/user-attachments/assets/2d6b8e0e-f3ff-4856-865f-4ebdda146d7a" />
+<img width="1187" height="161" alt="change-dir-group" src="https://github.com/user-attachments/assets/fd7d2000-b58c-47d0-ac5d-4fc3a60a0813" />
+<img width="1438" height="295" alt="dir-details" src="https://github.com/user-attachments/assets/6bd3a236-c1e7-41d8-83e6-86d22bcd3763" />
+<img width="329" height="295" alt="Screen Shot 2026-07-22 at 10 01 48 AM" src="https://github.com/user-attachments/assets/0fe10fa0-838b-44be-ad86-f6dfff726e33" />
+
+
+
+
+
+
+
 
 ### Lessons Learned
 - Linux permissions control access through owner, group, and others.
