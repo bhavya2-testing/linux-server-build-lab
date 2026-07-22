@@ -22,3 +22,55 @@
                  ▲
                  │
               uname -a
+
+### Q: What is Nginx?
+
+- Nginx is a high-performance web server that can also act as a reverse proxy, load balancer, and HTTP cache.
+
+---
+
+### Q: What does `systemctl status nginx` show?
+
+It displays:
+
+- Service state (running/stopped)
+- Process ID (PID)
+- Uptime
+- Recent log messages
+
+---
+
+### Q: Difference between `systemctl start` and `systemctl enable`?
+
+- `start` starts the service immediately.
+- `enable` configures the service to start automatically during system boot.
+
+---
+
+### Q: Why use `curl localhost`?
+
+To verify that the web server is serving content locally without using a browser.
+
+---
+
+### Q: Why use `ss -tulnp`?
+
+To verify:
+
+- The service is listening
+- Which port it is using
+- Which process owns that port
+
+---
+
+### Q: Where does Nginx serve files from by default?
+
+```
+/var/www/html
+```
+
+---
+
+### Q: What happens after modifying `index.html`?
+
+The updated content is immediately served because it is a static file. A service reload is generally not required for content changes, though it is commonly used after configuration changes.
