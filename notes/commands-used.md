@@ -306,7 +306,7 @@ Nginx is installed.
 Service is active.
 Service is enabled.
 Port 80 is listening.
-Web page is accessible.
+Web page is accessible. TO DO - Add a cutome page to show project related content
 
 ### Screenshots
 
@@ -315,8 +315,145 @@ Web page is accessible.
 <img width="1323" height="851" alt="reload-nginx" src="https://github.com/user-attachments/assets/f36c0b6b-f802-4534-8d42-143b31adf9c7" />
 
 
-###Lessons Learned
+### Lessons Learned
 
 - Nginx serves content from `/var/www/html` by default.
 - `systemctl reload` applies configuration or content changes without stopping the service.
 - `curl localhost` is a quick way to verify a web server from the command line.
+
+### Phase 5: Linux Logs & System Monitoring( Task 5: Investigate Linux System Logs)
+
+### Scenario
+
+You are the Linux administrator for a web server.
+
+A developer reports:
+
+> "Users are unable to access the application, and we also noticed several failed login attempts."
+
+Your task is to investigate the Linux server using system logs and monitoring commands.
+
+---
+
+## Objectives
+
+Investigate the server by answering the following questions:
+
+### Authentication Logs
+
+- Locate the Linux authentication log.
+- Identify recent failed login attempts.
+- Display only the latest failed login attempts.
+- Count the total number of failed login attempts.
+
+---
+
+### Nginx Logs
+
+Locate the Nginx log files.
+
+Determine:
+
+- Access log location
+- Error log location
+
+View the latest entries from both logs.
+
+---
+
+### Service Logs
+
+Inspect the Nginx service logs using `journalctl`.
+
+Determine:
+
+- Is the service running normally?
+- Were there any recent warnings or errors?
+- When was the service last started or reloaded?
+
+---
+
+### System Monitoring
+
+Collect the following system information:
+
+- Current memory usage
+- Current disk usage
+- Running Nginx process
+- Listening ports
+
+---
+
+## Verification
+
+Verify that you can answer the following:
+
+- Is Nginx currently running?
+- Is the web server listening on port 80?
+- Are authentication failures present?
+- Are there any recent Nginx errors?
+- Is the server running low on memory or disk space?
+
+---
+
+## Deliverables
+
+Include the following sections in your README:
+
+### Objective
+
+Explain the purpose of investigating Linux logs and monitoring system health.
+
+### Commands Used
+
+Document every command used during the investigation.
+
+### Findings
+
+Summarize your observations, including:
+
+- Authentication activity
+- Nginx logs
+- Service status
+- Resource utilization
+
+### Verification
+
+Explain how you confirmed your findings.
+
+### Screenshots
+
+Include only meaningful screenshots, such as:
+
+- Authentication log output
+- Nginx service status
+- `journalctl` output
+- System monitoring commands
+
+### Lessons Learned
+
+Reflect on what you learned about:
+
+- Linux log files
+- Service troubleshooting
+- System monitoring
+- Using logs to diagnose issues
+
+---
+
+## Bonus Challenge
+
+Simulate a small issue and investigate it.
+
+Examples:
+
+- Stop Nginx and observe the logs.
+- Restart Nginx and identify the restart event in `journalctl`.
+- Modify the web page and verify the service continues to function.
+- Trigger a failed login attempt (if supported in the lab) and locate it in the authentication log.
+
+Document:
+
+- The issue you created.
+- The commands used to investigate it.
+- The resolution.
