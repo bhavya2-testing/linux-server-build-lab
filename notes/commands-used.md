@@ -246,13 +246,6 @@ Who can execute deploy.sh?
 <img width="1438" height="295" alt="dir-details" src="https://github.com/user-attachments/assets/6bd3a236-c1e7-41d8-83e6-86d22bcd3763" />
 <img width="329" height="295" alt="Screen Shot 2026-07-22 at 10 01 48 AM" src="https://github.com/user-attachments/assets/0fe10fa0-838b-44be-ad86-f6dfff726e33" />
 
-
-
-
-
-
-
-
 ### Lessons Learned
 - Linux permissions control access through owner, group, and others.
 - `chmod` changes permissions while `chown` changes ownership.
@@ -281,6 +274,7 @@ Objectives
 - Verify the page using curl localhost.
 
 ### Commands Used
+
 `systemctl status nginx` - Will tell the status of the service(if not installed ,says service not found)
 
 `sudo apt upgrade` - Updates the local package index with the latest package information
@@ -300,14 +294,6 @@ Objectives
 `curl localhost` - Confirms if a web server or service is running locally on your own computer
 
 
-### Verification
-
-Nginx is installed.
-Service is active.
-Service is enabled.
-Port 80 is listening.
-Web page is accessible. TO DO - Add a cutome page to show project related content
-
 ### Screenshots
 
 <img width="969" height="446" alt="systemctl-status" src="https://github.com/user-attachments/assets/759ee7c5-e26c-4c27-9ac3-b4a72f2e36a9" />
@@ -326,18 +312,13 @@ Web page is accessible. TO DO - Add a cutome page to show project related conten
 ### Scenario
 
 You are the Linux administrator for a web server.
-
 A developer reports:
-
 > "Users are unable to access the application, and we also noticed several failed login attempts."
-
 Your task is to investigate the Linux server using system logs and monitoring commands.
 
 ---
 
-## Objectives
-
-Investigate the server by answering the following questions:
+## Objectives - Investigate the server by answering the following questions:
 
 ### Authentication Logs
 
@@ -348,39 +329,31 @@ Investigate the server by answering the following questions:
 
 ---
 
-### Nginx Logs
+### Nginx Logs (Locate the Nginx log files)
 
-Locate the Nginx log files.
-
-Determine:
-
-- Access log location
-- Error log location
-
-View the latest entries from both logs.
+- Determine:
+  - Access log location
+  - Error log location
+  - View the latest entries from both logs.
 
 ---
 
-### Service Logs
+### Service Logs (Inspect the Nginx service logs using `journalctl`)
 
-Inspect the Nginx service logs using `journalctl`.
-
-Determine:
-
-- Is the service running normally?
-- Were there any recent warnings or errors?
-- When was the service last started or reloaded?
+- Determine:
+  - Is the service running normally?
+  - Were there any recent warnings or errors?
+  - When was the service last started or reloaded?
 
 ---
 
 ### System Monitoring
 
-Collect the following system information:
-
-- Current memory usage
-- Current disk usage
-- Running Nginx process
-- Listening ports
+- Collect the following system information.
+  - Current memory usage
+  - Current disk usage
+  - Running Nginx process
+  - Listening ports
 
 ---
 
@@ -396,64 +369,48 @@ Verify that you can answer the following:
 
 ---
 
-## Deliverables
-
-Include the following sections in your README:
-
-### Objective
-
-Explain the purpose of investigating Linux logs and monitoring system health.
-
 ### Commands Used
 
-Document every command used during the investigation.
+`ls /var/log/auth.log` - locate authentication log
 
-### Findings
+`grep -i "failed" /var/log/auth.log | tail -10` - view latest failed login attempts
 
-Summarize your observations, including:
+`grep -i "failed" /var/log/auth.log | wc -l` - count failed login attempts
 
-- Authentication activity
-- Nginx logs
-- Service status
-- Resource utilization
+`tail -20 /var/log/auth.log`  - View latest authentication log entries
 
-### Verification
+`ls -l /var/log/nginx/` - locate log files
 
-Explain how you confirmed your findings.
+`tail -20 /var/log/nginx/access.log` -  view access log
+
+`systemctl status nginx` - check service status
+
+`free -h` -  system memory monitoring
+
+`df -h` - disk monitoring
+
+`pgrep -a nginx` - check running nginx process
+
+`sudo ss -tulnp | grep :80` - listening port
 
 ### Screenshots
 
-Include only meaningful screenshots, such as:
-
 - Authentication log output
-- Nginx service status
-- `journalctl` output
+<img width="1002" height="627" alt="authentication-logs" src="https://github.com/user-attachments/assets/c29bbe1d-4461-4b01-9cef-31ce120996d2" />
+
+- nginx logs
+<img width="1002" height="441" alt="nginx-service-logs" src="https://github.com/user-attachments/assets/59810e1a-164f-445c-ac5d-a46d19446511" />
+
 - System monitoring commands
+<img width="1000" height="376" alt="system-monitoring" src="https://github.com/user-attachments/assets/72ff8858-0e6c-48e7-8ed9-57642fa66b32" />
+
 
 ### Lessons Learned
 
-Reflect on what you learned about:
-
-- Linux log files
-- Service troubleshooting
-- System monitoring
-- Using logs to diagnose issues
-
+- Linux stores different types of logs in separate locations, making it easier to investigate authentication, service, and application-related events.
+- `journalctl` provides a centralized way to view service logs and helps troubleshoot service startup, shutdown, and restart events.
+- System monitoring commands such as `free`, `df`, `ps`, and `ss` provide a quick overview of the server's health and resource utilization.
+- Reviewing logs before making configuration changes helps identify the root cause of issues instead of relying on assumptions.
+- Combining log analysis with service status and system monitoring provides a structured approach to diagnosing Linux server problems.
+  
 ---
-
-## Bonus Challenge
-
-Simulate a small issue and investigate it.
-
-Examples:
-
-- Stop Nginx and observe the logs.
-- Restart Nginx and identify the restart event in `journalctl`.
-- Modify the web page and verify the service continues to function.
-- Trigger a failed login attempt (if supported in the lab) and locate it in the authentication log.
-
-Document:
-
-- The issue you created.
-- The commands used to investigate it.
-- The resolution.
