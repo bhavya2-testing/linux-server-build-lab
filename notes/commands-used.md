@@ -414,3 +414,180 @@ Verify that you can answer the following:
 - Combining log analysis with service status and system monitoring provides a structured approach to diagnosing Linux server problems.
   
 ---
+
+# Phase 6: Logical Volume Manager (LVM)
+
+## Task 6: Configure and Manage Logical Volumes
+
+### Scenario
+
+Your Linux server is running low on storage, and a new application requires additional disk space.
+
+As the Linux administrator, you must configure a new Logical Volume Manager (LVM) storage stack, create a filesystem, mount it, and verify that it is available for use.
+
+---
+
+## Objectives
+
+- Complete the following tasks:
+
+### 1. Prepare a Virtual Disk - If using Killercoda or WSL without an extra disk, create a virtual disk image to simulate a new storage device.
+
+---
+
+### 2. Create a Physical Volume (PV)
+
+- Initialize the new disk as an LVM Physical Volume.
+- Verify the Physical Volume has been created successfully.
+---
+
+### 3. Create a Volume Group (VG)
+ - Create a Volume Group named:
+
+```
+vg_data
+```
+
+ - Verify the Volume Group.
+
+---
+
+### 4. Create a Logical Volume (LV)
+
+- Create a Logical Volume named:
+
+```
+lv_storage
+```
+
+- Use approximately 500 MB (or an appropriate size based on the available virtual disk).
+- Verify the Logical Volume.
+
+---
+
+### 5. Create a Filesystem
+
+- Format the Logical Volume with the ext4 filesystem.
+
+- Verify the filesystem was created successfully.
+
+---
+
+### 6. Create a Mount Point
+
+- Create the directory:
+
+```
+/mnt/storage
+```
+
+- Mount the Logical Volume.
+- Verify that the filesystem is mounted.
+
+---
+
+### 7. Verify Storage
+
+- Confirm:
+  - Physical Volume
+  - Volume Group
+  - Logical Volume
+  - Mounted filesystem
+  - Available disk space
+
+---
+
+## Verification
+
+- Verify each of the following:
+  - Physical Volume exists.
+  - Volume Group exists.
+  - Logical Volume exists.
+  - Filesystem is mounted.
+  - Disk space is available.
+  - Mount point is accessible.
+
+---
+
+## Deliverables
+
+### Objective
+
+Explain the purpose of using LVM for flexible storage management.
+
+---
+
+### Commands Used
+
+ - Document every command used during the exercise.
+```
+# Create a 1GB blank disk image
+dd if=/dev/zero of=/tmp/disk1.img bs=1M count=1024
+
+# Attach the image as a loop device
+losetup -fP /tmp/disk1.img
+
+# Confirm which loop device was assigned
+losetup -a
+
+sudo pvcreate /dev/loop0
+sudo pvs
+
+sudo vgcreate devops-vg /dev/loop0
+sudo vgs
+
+sudo lvcreate -L 500M -n lv_storage vg_data
+sudo lvs
+
+# Format with ext4 filesystem
+sudo mkfs.ext4 /dev/devops-vg/lv_storage
+
+# Create the mount point
+sudo mkdir -p /mnt/lv_storage
+
+# Mount the LV
+sudo mount /dev/vg_data/lv_storage /mnt/lv_storage
+
+# Verify
+df -h /mnt/lv_storage
+
+```
+
+
+---
+
+### Verification
+
+Explain how you confirmed:
+
+- PV creation - Used pvcreate with loop device name to create and pvs to verify it have been created
+- VG creation - Used vgcreate with volume group name  and vgs to verify it have been created
+- LV creation - Used lvcreate with logical voume name and lvs to verify it have been created
+- Filesystem creation - 
+- Mount status - 
+- Disk availability - df-h  to verify 
+
+---
+
+### Screenshots
+
+Include meaningful screenshots, such as:
+
+- Physical Volume information/Volume Group information / Logical Volume information
+
+<img width="1632" height="898" alt="volumes-info" src="https://github.com/user-attachments/assets/38be916f-7bc0-4a24-8fee-4254cb4681fd" />
+
+- Mounted filesystem /  Disk usage
+
+<img width="1234" height="623" alt="mount-info" src="https://github.com/user-attachments/assets/696f44e7-d3cd-414f-8517-d4d74d30fa36" />
+
+---
+
+### Lessons Learned
+
+Reflect on what you learned about:
+
+- Physical Volumes (PV) / Volume Groups (VG) / Logical Volumes (LV) - These work together to create scalable storage.
+- Filesystem creation - LVM provides a flexible way to manage storage without relying on fixed disk partitions. 
+- Mounting storage - A Logical Volume must be formatted with a filesystem before it can be mounted and used.
+- Why LVM is useful in production environments - LVM makes it easier to extend storage in production environments with minimal disruption
