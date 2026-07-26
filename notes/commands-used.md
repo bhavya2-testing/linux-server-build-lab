@@ -591,3 +591,173 @@ Reflect on what you learned about:
 - Filesystem creation - LVM provides a flexible way to manage storage without relying on fixed disk partitions. 
 - Mounting storage - A Logical Volume must be formatted with a filesystem before it can be mounted and used.
 - Why LVM is useful in production environments - LVM makes it easier to extend storage in production environments with minimal disruption
+
+---
+# Phase 7: Bash Automation
+
+## Task 7: Automate Basic Linux Server Administration
+
+### Scenario
+
+- Your team frequently provisions new Linux servers for development and testing.Instead of manually running the same commands every time, you have been asked to automate the process using a Bash script.The script should perform common system administration tasks and display useful server information.
+
+---
+
+## Objectives
+
+- Create a Bash script named: server_setup.sh . The script should perform the following tasks:
+
+### 1. Display basic server information
+- Display:
+  - Hostname
+  - Current user
+  - Current date and time
+  - Linux kernel version
+
+---
+
+### 2. Display system resources
+- Show:
+  - Memory usage
+  - Disk usage
+
+---
+
+### 3. Verify Nginx
+- Check whether Nginx is installed. If installed: Display service status.
+- If not installed: Display an informative message.
+
+---
+
+### 4. Verify Docker
+
+- Check whether Docker is installed. Display an appropriate message.
+
+---
+
+### 5. Display listening ports
+ - Show currently listening TCP/UDP ports.
+
+---
+
+### 6. Print a completion message
+- Example: Linux server health check completed successfully.
+
+---
+
+## Verification
+
+Verify:
+
+- The script executes successfully.
+- All commands display expected information.
+- Informative messages appear when software is not installed.
+
+---
+
+### Commands Used
+
+Document:
+
+- Script creation
+  ```
+  mkdir /devops/bhavya
+  cd /devops/bhavya
+  vim server_setup.sh
+```
+#!/bin/bash
+
+echo "===== Linux Server Information ====="
+
+echo "Hostname:"
+hostname
+
+echo
+
+echo "Current User:"
+whoami
+
+echo
+
+echo "Current Date:"
+date
+
+echo
+
+echo "Kernel Version:"
+uname -r
+
+echo
+echo "===== Memory Usage ====="
+free -h
+
+echo
+echo "===== Disk Usage ====="
+df -h
+
+echo
+echo "===== Nginx Status ====="
+
+if systemctl list-unit-files | grep -q nginx; then
+    systemctl status nginx --no-pager
+else
+    echo "Nginx is not installed."
+fi
+
+echo
+echo "===== Docker Status ====="
+
+if command -v docker >/dev/null 2>&1; then
+    docker --version
+else
+    echo "Docker is not installed."
+fi
+
+echo
+echo "===== Listening Ports ====="
+
+ss -tuln
+
+echo
+echo "Linux server health check completed successfully."
+
+ ```
+- Permission changes
+  `chmod +x server_setup.sh`
+  
+- Script execution
+  `./server_setup.sh`
+
+---
+
+### Verification
+
+Explain how you confirmed the script worked correctly.
+
+---
+
+### Screenshots
+
+Include:
+
+- Script contents
+
+<img width="1440" height="900" alt="script" src="https://github.com/user-attachments/assets/ebd71346-aa6c-423a-af57-fa1bd42c2920" />
+
+- Script execution
+
+<img width="684" height="79" alt="script-execute" src="https://github.com/user-attachments/assets/efaab467-dd3e-4aa8-86f5-b013ad97b3e0" />
+
+- Output
+<img width="1440" height="900" alt="output" src="https://github.com/user-attachments/assets/2dd41508-ba61-436b-b0f5-6dd20eb6b662" />
+
+
+---
+
+### Lessons Learned
+
+- Bash scripts automate repetitive Linux administration tasks.
+- Making a script executable with `chmod +x` allows it to run like a program.
+- Conditional statements enable scripts to handle different system states gracefully.
+- Automating system checks saves time and reduces manual effort.
+- Bash scripting is a foundational skill for DevOps and system administration.
