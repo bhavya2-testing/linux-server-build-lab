@@ -563,9 +563,9 @@ Explain how you confirmed:
 - PV creation - Used pvcreate with loop device name to create and pvs to verify it have been created
 - VG creation - Used vgcreate with volume group name  and vgs to verify it have been created
 - LV creation - Used lvcreate with logical voume name and lvs to verify it have been created
-- Filesystem creation - 
-- Mount status - 
-- Disk availability - df-h  to verify 
+- Filesystem creation - Used lsblk -f to verify the filesystem creation
+- Mount status - Used df -h command
+- Disk availability - Used df -h command
 
 ---
 
