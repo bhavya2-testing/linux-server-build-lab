@@ -761,3 +761,32 @@ Include:
 - Conditional statements enable scripts to handle different system states gracefully.
 - Automating system checks saves time and reduces manual effort.
 - Bash scripting is a foundational skill for DevOps and system administration.
+
+---
+
+## Root Cause
+
+Nginx was found to be inactive, which caused the web application to become unavailable.
+
+## Resolution
+
+Started the Nginx service using `systemctl start nginx`.
+
+## Verification
+
+- Confirmed Nginx was active using `systemctl status nginx`.
+- Confirmed port 80 was listening using `ss`.
+- Confirmed the web application was accessible using `curl localhost`.
+
+<img width="1998" height="1249" alt="nginxservice-failure" src="https://github.com/user-attachments/assets/50e7e6b3-e032-439e-a066-df6d30b4095b" />
+
+## Lessons Learned
+
+- Troubleshooting should begin by gathering evidence and checking the current state before making changes.
+- Checking service status, listening ports, logs, and application availability helps narrow down the root cause of an issue.
+- A service being inactive can directly affect application availability, even when the server's other resources are healthy.
+- `systemctl` can be used to manage services, while `ss` and `curl` help verify network and application availability.
+- After resolving an issue, it is important to verify that the service is running and the application is accessible.
+- A structured troubleshooting process helps avoid making unnecessary changes and makes it easier to identify the root cause.
+
+---
